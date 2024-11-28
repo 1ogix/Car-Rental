@@ -7,8 +7,16 @@
         <!-- Display the logged-in user's name -->
         <span>Welcome, {{ Auth::user()->name }}</span>
     </div>
-    <div>
-        <!-- It is never too late to be what you might have been. - George Eliot -->
-        <h1>test</h1>
+
+    <div class="flex justify-center mb-4 ">
+        <a id="reserveButton" href="{{ route('booking.create') }}"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            Reserve
+        </a>
     </div>
+    @if (session('success'))
+        <script>
+            alert('{{ session('success') }}');
+        </script>
+    @endif
 @endsection
