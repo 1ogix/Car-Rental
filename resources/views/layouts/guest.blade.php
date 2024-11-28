@@ -25,9 +25,9 @@
             </div>
 
             <!-- Welcome Message -->
-            <div class="text-center mt-0">
-                <h1 class="font-bold text-gray-800 dark:text-gray-200" style="font-family: 'Bricolage Grotesque'; font-size: 3.75rem; color: white;">DRIVE EASE</h1>
-                <p class="-mt-2 text-gray-600 dark:text-gray-400" style="color: whitesmoke;">Focus on the Road Ahead</p>
+            <div class="text-center -mt-2">
+                <h1 class="-mt-2 font-bold text-gray-800 dark:text-gray-200" style="font-family: 'Bricolage Grotesque'; font-size: 3.50rem; color: white;">DRIVE EASE</h1>
+                <p class="-mt-2 text-gray-600 dark:text-gray-400" style="color: whitesmoke; font-size: 1.10rem;">Focus on the Road Ahead</p>
             </div>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
