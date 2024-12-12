@@ -12,8 +12,20 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Bricolage Grotesque', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                sm: ['14px', '20px'],
+                base: ['16px', '24px'],
+                lg: ['20px', '28px'],
+                xl: ['24px', '32px'],
+            },
+            colors: {
+                primary: '#0960A8',
+                secondayr: '#39B0FF',
+                tertiary: '#DFF3FF',
+                accent: '#008CFF',
+            }
         },
     },
 
