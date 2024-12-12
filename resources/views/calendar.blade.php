@@ -8,12 +8,12 @@
         <span>Welcome, {{ Auth::user()->name }}</span>
     </div>
 
-    <div>
-        <h1>Calendar Page</h1>
+    <div style="text-align: left; margin-bottom: 20px;">
+        <h1 style="padding-left: 100px;">Calendar Page</h1>
     </div>
 
     <!-- FullCalendar container -->
-    <div class="max-w-screen-lg mx-auto bg-white shadow-md rounded-lg p-5">
+    <div class="max-w-screen-lg mx-auto bg-[#FFFFFF] shadow-md rounded-lg p-5">
         <!-- FullCalendar container -->
         <div id="calendar" class="w-full h-[700px] rounded-lg shadow-md border border-gray-300"></div>
     </div>

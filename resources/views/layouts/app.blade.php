@@ -20,6 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:200,300,400,500,600,700,800" rel="stylesheet" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -31,7 +32,7 @@
         <x-sidebar />
 
         <!-- Main Content -->
-        <div class="flex-grow p-6">
+        <div class="flex-grow p-6" style="background: linear-gradient(to bottom, #FFFFFF, #39B0FF);">
             @yield('content')
         </div>
     </div>
