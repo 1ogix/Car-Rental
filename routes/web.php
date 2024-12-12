@@ -10,11 +10,14 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\BookingController;
 
 // Protected Routes (Require Login)
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
+    Route::get('/booking/create', [BookingController::class, 'create'])->name('booking.create');
+    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
     // Role-based access: Admin and Staff for specific pages
     Route::middleware('role:admin,staff')->group(function () {

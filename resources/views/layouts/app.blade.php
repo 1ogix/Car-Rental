@@ -7,9 +7,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- tailwindcss -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="{{ asset('build/assets/css/app.css') }}" rel="stylesheet">
+
+    <!-- fullcalendar CDN -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,6 +35,7 @@
             @yield('content')
         </div>
     </div>
+    @yield('scripts')
 </body>
 
 </html>
