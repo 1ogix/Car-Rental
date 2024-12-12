@@ -5,19 +5,23 @@
 @section('content')
     <div class="flex">
         <!-- Reservations List -->
-        <div class="w-1/2 bg-white h-screen p-4">
+        <div class="flex flex-col w-1/2 bg-white h-screen p-4">
             <h2 class="font-bold mb-4">Reservations</h2>
-            <div id="reservations-container">
-                <!-- Reservations will be dynamically loaded here -->
+            <div class="flex flex-col grow justify-between bg-gray-300">
+                <div id="reservations-container">
+                    <!-- Reservations will be dynamically loaded here -->
+                </div>
+                <!-- Debugging: Add a button to manually refresh reservations -->
+                <button id="refresh-reservations" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                    Refresh Reservations
+                </button>
+
             </div>
-            <!-- Debugging: Add a button to manually refresh reservations -->
-            <button id="refresh-reservations" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                Refresh Reservations
-            </button>
+
         </div>
 
         <!-- Details Section -->
-        <div class="w-1/4 bg-gray-100 h-screen p-4">
+        <div class="w-1/4 bg-gray-100 h-screen p-4 grow">
             <h2 class="font-bold mb-4">Details</h2>
             <div id="reservation-details">
                 <!-- Reservation details will appear here -->
