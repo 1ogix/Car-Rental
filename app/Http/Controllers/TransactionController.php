@@ -13,6 +13,7 @@ class TransactionController extends Controller
     {
         // Fetch approved bookings or transactions
         $transactions = Booking::where('status', 'approved')->get();
+        // $transactions = Transaction::all();
 
         // Pass the transactions to the view
         return view('transactions', compact('transactions'));

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Booking;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
 {
@@ -64,9 +65,14 @@ class BookingController extends Controller
             return [
                 'id' => $reservation->id,
                 'customer_name' => $reservation->customer_name,
-                'car' => $reservation->car->name,
+                'car' => [
+                    'name' => $reservation->car->name,
+                    'model' => $reservation->car->model,
+                    'plate_number' => $reservation->car->plate_number,
+                ],
                 'start_date' => $reservation->start_date,
                 'end_date' => $reservation->end_date,
+                'status' => $reservation->status, // <--- Add this line
             ];
         }));
     }
@@ -86,6 +92,7 @@ class BookingController extends Controller
             'end_date' => $reservation->end_date,
         ]);
     }
+    //Handle approve reservation
     public function approve($id)
     {
         $booking = Booking::with('car')->findOrFail($id);
@@ -101,6 +108,7 @@ class BookingController extends Controller
             'end_date' => $booking->end_date,
             'payment_status' => $booking->payment_status,
         ]);
+        // $booking->delete(); // This will delete the booking from the database
 
         return response()->json(['success' => true, 'message' => 'Reservation approved successfully']);
     }
@@ -110,6 +118,9 @@ class BookingController extends Controller
         $booking = Booking::findOrFail($id);
         $booking->status = 'declined';
         $booking->save();
+
+        // Delete the booking after declining
+        $booking->delete(); // This will delete the booking from the database
 
         return response()->json(['success' => true, 'message' => 'Reservation declined successfully']);
     }

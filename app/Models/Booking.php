@@ -16,6 +16,7 @@ class Booking extends Model
         'start_date',
         'end_date',
         'proof_of_downpayment',
+        'status', // 'pending', 'approved', 'rejected'
     ];
     public function car()
     {

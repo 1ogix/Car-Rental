@@ -16,6 +16,7 @@ class Transaction extends Model
         'start_date',
         'end_date',
         'payment_status', // 'downpayment' or 'full_paid'
+        'status', // 'pending', 'approved', 'rejected'
     ];
 
     public function booking()

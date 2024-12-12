@@ -12,6 +12,8 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BookingController;
 
+
+
 // Protected Routes (Require Login)
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -58,4 +60,4 @@ Route::get('/db-test', function () {
     }
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

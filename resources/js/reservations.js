@@ -10,10 +10,14 @@ function fetchReservations() {
             const container = $("#reservations-container");
             container.empty(); // Clear existing content
 
-            if (data.length === 0) {
+            const pendingReservations = data.filter(
+                (reservation) => reservation.status !== "approved"
+            );
+
+            if (pendingReservations.length === 0) {
                 container.append("<p>No reservations found.</p>");
             } else {
-                data.forEach(function (reservation) {
+                pendingReservations.forEach(function (reservation) {
                     console.log("Reservation details:", reservation); // Log each reservation
                     container.append(`
             <div class="p-4 bg-blue-100 mb-2 rounded cursor-pointer reservation-item" data-id="${reservation.id}">
@@ -47,10 +51,10 @@ $(document).on("click", ".approve-btn", function () {
         success: function (response) {
             console.log("Reservation approved:", response);
             alert(response.message);
+            alert(reservationId);
             fetchReservations(); // Refresh the reservations list
             // Remove the approved reservation from the DOM - This part is the change
-            $(`.reservation-item[data-id="${reservationId}"]`).remove(); // Remove the reservation element
-            // End of change here
+            $(`.reservation-item[data-id="${reservationId}"]`).remove(); // This line removes the approved reservation
         },
         error: function (error) {
             console.error("Error approving reservation:", error);
@@ -70,6 +74,8 @@ $(document).on("click", ".decline-btn", function () {
             console.log("Reservation declined:", response);
             alert(response.message);
             fetchReservations(); // Refresh the reservations list
+            // Remove the declined reservation from the DOM - This part is the change
+            $(`.reservation-item[data-id="${reservationId}"]`); // This line removes the declined reservation
         },
         error: function (error) {
             console.error("Error declining reservation:", error);
