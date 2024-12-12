@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class Transaction extends Model
 {
     //
     use HasFactory;
-
     protected $fillable = [
-        'car_id',
+        'booking_id',
         'customer_name',
+        'car_name',
         'start_date',
         'end_date',
-        'proof_of_downpayment',
+        'payment_status', // 'downpayment' or 'full_paid'
     ];
-    public function car()
+
+    public function booking()
     {
-        return $this->belongsTo(Car::class);
+        return $this->belongsTo(Booking::class);
     }
 }

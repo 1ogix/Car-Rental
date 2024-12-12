@@ -15,3 +15,6 @@ Route::get('/bookings', [BookingController::class, 'getBookings'])->name('api.bo
 
 Route::get('/reservations', [BookingController::class, 'getReservations'])->name('api.reservations');
 Route::get('/reservations/{id}', [BookingController::class, 'getReservationDetails'])->name('api.reservation.details');
+
+Route::post('/reservations/approve/{id}', [BookingController::class, 'approve']);
+Route::post('/reservations/decline/{id}', [BookingController::class, 'decline']);

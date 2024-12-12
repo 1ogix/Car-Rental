@@ -32,6 +32,12 @@
                 <label for="end_date" class="block font-medium">End Date</label>
                 <input type="date" name="end_date" id="end_date" class="w-full border rounded p-2" required>
             </div>
+            {{-- newly added, uploading a proof of payment option --}}
+            <div class="mb-4">
+                <label for="proof_of_downpayment" class="block font-medium">Proof of Downpayment</label>
+                <input type="file" name="proof_of_downpayment" id="proof_of_downpayment"
+                    class="w-full border rounded p-2">
+            </div>
 
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                 Save Booking

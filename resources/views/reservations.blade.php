@@ -50,10 +50,13 @@
                             container.append(`
             <div class="p-4 bg-blue-100 mb-2 rounded cursor-pointer reservation-item" data-id="${reservation.id}">
                 <p class="font-bold">${reservation.customer_name}</p>
+                <button class="approve-btn bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded mt-2" data-id="${reservation.id}">Approve</button>
+                <button class="decline-btn bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded mt-2" data-id="${reservation.id}">Decline</button>
             </div>
         `);
                         });
                     }
+                    console.log('Updated container HTML:', container.html());
                 },
                 error: function(error) {
                     console.error('Error fetching reservations:', error);
@@ -65,6 +68,46 @@
             console.log('Manual refresh triggered');
             fetchReservations(); // Fetch reservations when the button is clicked
         });
+        // Handle Approve button click - This part is the change
+        $(document).on('click', '.approve-btn', function() {
+            const reservationId = $(this).data('id');
+            console.log('Approving reservation ID:', reservationId);
+
+            $.ajax({
+                url: `/api/reservations/approve/${reservationId}`,
+                method: 'POST',
+                success: function(response) {
+                    console.log('Reservation approved:', response);
+                    alert(response.message);
+                    fetchReservations(); // Refresh the reservations list
+                    // Remove the approved reservation from the DOM - This part is the change
+                    $(`.reservation-item[data-id="${reservationId}"]`).remove(); // Remove the reservation element
+                    // End of change here
+                },
+                error: function(error) {
+                    console.error('Error approving reservation:', error);
+                }
+            });
+        }); // End of change here
+
+        // Handle Decline button click - This part is the change
+        $(document).on('click', '.decline-btn', function() {
+            const reservationId = $(this).data('id');
+            console.log('Declining reservation ID:', reservationId);
+
+            $.ajax({
+                url: `/api/reservations/decline/${reservationId}`,
+                method: 'POST',
+                success: function(response) {
+                    console.log('Reservation declined:', response);
+                    alert(response.message);
+                    fetchReservations(); // Refresh the reservations list
+                },
+                error: function(error) {
+                    console.error('Error declining reservation:', error);
+                }
+            });
+        }); // End of change here
 
         // Handle reservation click
         $(document).on('click', '.reservation-item', function() {
@@ -81,8 +124,9 @@
                     details.html(`
                     <p><strong>Customer Name:</strong> ${data.customer_name}</p>
                     <p><strong>Car:</strong> ${data.car.name}</p>
+                    <p><strong>Car plate#:</strong> ${data.car.plate_number}</p>
                     <p><strong>Start Date:</strong> ${data.start_date}</p>
-                    <p><strong>End Date:</strong> ${data.end_date}</p>
+                     <p><strong>End Date:</strong> ${data.end_date}</p>
                 `);
                 },
                 error: function(error) {
