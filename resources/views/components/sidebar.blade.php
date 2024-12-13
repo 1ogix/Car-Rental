@@ -1,8 +1,14 @@
 <aside class="w-64 text-white p-4 min-h-screen flex flex-col"
-    style="background: linear-gradient(180deg, #39B0FF 0%, #0960A8 100%);">
-    <div class="mb-8 flex items-center justify-center">
-        <img src="{{ asset('build/assets/images/car-logo.png') }}" alt="Car Logo">
+    style="background: #0960A8;">
+    <div class="-mb-2 flex items-center justify-center">
+        <!--<img src="{{ asset('build/assets/images/car-logo.png') }}" alt="Car Logo">-->
+        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
     </div>
+
+    <div class="text-center">
+            <h1 class=" mb-10 -mt-2 font-bold text-gray-800 dark:text-gray-200" style="font-family: 'Bricolage Grotesque'; font-size: 2.00rem; color: white;">DRIVE EASE</h1>
+    </div>
+
     <nav class="flex-grow">
         <ul id="LIST" class="space-y-4">
             @auth
