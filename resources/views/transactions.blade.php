@@ -23,9 +23,12 @@
             @foreach ($transactions as $transaction)
                 <tr>
                     <td class="border px-4 py-2">{{ $transaction->customer_name }}</td>
-                    <td class="border px-4 py-2">{{ $transaction->car->name}}</td>
-                    <td class="border px-4 py-2">{{ $transaction->car->model}}</td>
-                    <td class="border px-4 py-2">{{ $transaction->car->plate_number}}</td>
+                    {{-- <td class="border px-4 py-2">{{ $transaction->car->name}}</td> --}}
+                    {{-- <td class="border px-4 py-2">{{ $transaction->car->model}}</td> --}}
+                    {{-- <td class="border px-4 py-2">{{ $transaction->car->plate_number}}</td> --}}
+                    <td>{{ $transaction->booking->car->name }}</td>
+                    <td>{{ $transaction->booking->car->model }}</td>
+                    <td>{{ $transaction->booking->car->plate_number }}</td>
                     <td class="border px-4 py-2">{{ $transaction->start_date }}</td>
                     <td class="border px-4 py-2">{{ $transaction->end_date }}</td>
                     <td class="border px-4 py-2">{{ $transaction->payment_status }}</td>

@@ -13,7 +13,6 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BookingController;
 
 
-
 // Protected Routes (Require Login)
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -23,13 +22,14 @@ Route::middleware('auth')->group(function () {
 
     // Role-based access: Admin and Staff for specific pages
     Route::middleware('role:admin,staff')->group(function () {
-        Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+        // Replace the old single cars route with a resource route:
+        Route::resource('cars', CarController::class);
+
         Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
         Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
         Route::get('/users', [UsersController::class, 'index'])->name('users');
     });
-    // Role-based access: User for specific pages
-
+    // Role-based access: User for specific pages (if any)
 });
 
 // Public Routes (Accessible Without Login)
